@@ -1,0 +1,38 @@
+{
+  "name": "unimart-backend",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "keywords": [
+    "unimart",
+    "marketplace"
+  ],
+  "author": "",
+  "license": "ISC",
+  "description": "UniMart Student Marketplace Backend",
+  "dependencies": {
+    "axios": "^1.12.2",
+    "bcryptjs": "^3.0.2",
+    "cloudinary": "^2.7.0",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "express-async-handler": "^1.2.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongodb": "^5.9.2",
+    "next-cloudinary": "^6.16.0",
+    "resend": "^6.2.2"
+  },
+  "devDependencies": {
+    "@prisma/client": "^6.17.0",
+    "@types/express": "^5.0.3",
+    "@types/node": "^24.7.0",
+    "nodemon": "^3.1.10",
+    "prisma": "^6.17.0",
+    "typescript": "^5.9.3"
+  }
+}
