@@ -7,11 +7,16 @@ const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key';
 
 // Verify JWT Token from httpOnly cookie
 const authenticateToken = asyncHandler(async (req, res, next) => {
-  console.log('Cookies in authenticateToken:', req.cookies); // Debug
-  const token = req.cookies?.token;
+  let token = req.cookies?.token;
+  
+  // Check Authorization header if no cookie token
+  const authHeader = req.headers.authorization;
+  if (!token && authHeader && authHeader.startsWith('Bearer ')) {
+    token = authHeader.split(' ')[1];
+  }
 
   if (!token) {
-    console.log('No token found in cookies'); // Debug
+    console.log('No token found in cookies or Authorization header'); // Debug
     return res.status(401).json({ 
       message: 'Access token required. Please login.' 
     });
