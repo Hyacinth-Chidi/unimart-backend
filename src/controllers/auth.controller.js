@@ -17,11 +17,12 @@ const generateToken = (userId, rememberMe = false) => {
 // Set cookie helper
 const setAuthCookie = (res, token, rememberMe = false) => {
   const maxAge = rememberMe ? 30 * 24 * 60 * 60 * 1000 : 7 * 24 * 60 * 60 * 1000;
-  console.log('Setting cookie with token:', token); // Debug
+
   res.cookie('token', token, {
     httpOnly: true,
-    secure: process.env.NODE_ENV === 'production',
-    sameSite: 'lax',
+    secure: true,
+    sameSite: 'none',
+    path: '/',
     maxAge
   });
 };
@@ -167,6 +168,7 @@ const login = asyncHandler(async (req, res) => {
 
   res.status(200).json({
     message: 'Login successful',
+    token, // Include token in response
     user: {
       id: user.id,
       name: user.name,
